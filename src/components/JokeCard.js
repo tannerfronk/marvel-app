@@ -1,16 +1,21 @@
 import {Jokes} from '../data/jokes'
 import { Card } from '@material-ui/core'
+import './JokeCard.css'
 
-const jokeCard = () => {
+const JokeCard = () => {
+
     return (
         Jokes.map((joke) => {
             return(
-                <Card key={joke.id}>
-                    <h1>{joke.setup} {joke.punchline}</h1>
-                </Card>
+                <div className ="jokeCard">
+                    <Card key={joke.id}>
+                        <h1>{joke.setup}</h1>
+                        <h2 className="punchLine">{joke.punchline}</h2>
+                    </Card>
+                </div>
             )
         })
     )
 }
 
-export default jokeCard
+export default JokeCard
