@@ -1,8 +1,12 @@
-.App {
+body {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  text-align: center;
   background-color: lightgrey;
-}
 
+}
+.mainContent {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 600px;
+  justify-content: center;
+}

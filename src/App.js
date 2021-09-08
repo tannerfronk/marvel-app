@@ -4,7 +4,7 @@ import JokeCard from './components/JokeCard'
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="mainContent">
       <JokeCard/>
     </div>
   );

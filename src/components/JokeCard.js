@@ -1,16 +1,17 @@
 import {Jokes} from '../data/jokes'
 import { Card } from '@material-ui/core'
 import './JokeCard.css'
+import PunchLine from './PunchLine'
 
 const JokeCard = () => {
 
     return (
         Jokes.map((joke) => {
             return(
-                <div className ="jokeCard">
-                    <Card key={joke.id}>
-                        <h1>{joke.setup}</h1>
-                        <h2 className="punchLine">{joke.punchline}</h2>
+                <div className="jokeCard">
+                    <Card className="cardInfo" key={joke.id}>
+                        <h2>{joke.setup}</h2>
+                        <PunchLine punchLine={joke.punchline}/>
                     </Card>
                 </div>
             )

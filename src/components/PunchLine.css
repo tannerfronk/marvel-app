@@ -1,0 +1,8 @@
+.punchLine {
+    text-align: center;
+    background-color: lightblue;
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 1rem;
+    border-radius: 5px;
+}
