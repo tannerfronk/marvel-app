@@ -7,25 +7,24 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography';
 
 const App = () => {
-    const [currentJokes, setCurrentJokes] = useState([])
-    const [amountOfJokes, setAmountOfJokes] = useState(0)
+    const [currentJokes, setCurrentJokes] = useState([Jokes[0], Jokes[1], Jokes[2]])
+    const [amountOfJokes, setAmountOfJokes] = useState(5)
 
-    // load 5 jokes on load
-    for(let i = 0; i < 5; i++){
-        currentJokes.push(Jokes[i])
-    }
-
+    // load one joke per click
     const handleLoadMore = () => {
-        for(let i = amountOfJokes; i < amountOfJokes + 5; i++){
-            setCurrentJokes([Jokes[i], ...currentJokes])
+        let currentJokesNum = amountOfJokes
+        let totalJokes = amountOfJokes + 1
+        for(let i = currentJokesNum; i < totalJokes; i++){
+            setCurrentJokes([...currentJokes, Jokes[i]])
         }
+        setAmountOfJokes(totalJokes)
     }
 
   return (
     <div className="mainContent">
         <JokeCard jokeList={currentJokes}/>
         <Button>
-            <Typography onClick={handleLoadMore}>Load More Jokes</Typography>
+            <Typography onClick={handleLoadMore}>Load New Joke</Typography>
         </Button>
     </div>
   );
