@@ -25,7 +25,9 @@ const App = () => {
         <JokeCard jokeList={currentJokes}/>
         <Button
             sx={{
-                m: '1rem',
+                width: '100%',
+                mx: '1.5rem',
+                my: '1rem',
                 background: '#fff',
                 borderRadius: '5px',
                 boxShadow: '5px 5px 5px gray'

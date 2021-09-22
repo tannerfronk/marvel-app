@@ -14,7 +14,7 @@ const JokeCard = (props) => {
                     <Card
                         sx={{
                             width: '100%',
-                            m: '1rem .5rem',
+                            my: '1rem',
                             boxShadow: '5px 5px 5px gray',
                             top: '50%',
                             left: '50%',
