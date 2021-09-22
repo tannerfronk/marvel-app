@@ -23,7 +23,14 @@ const App = () => {
   return (
     <div className="mainContent">
         <JokeCard jokeList={currentJokes}/>
-        <Button>
+        <Button
+            sx={{
+                m: '1rem',
+                background: '#fff',
+                borderRadius: '5px',
+                boxShadow: '5px 5px 5px gray'
+            }}
+        >
             <Typography onClick={handleLoadMore}>Load New Joke</Typography>
         </Button>
     </div>

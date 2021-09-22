@@ -1,13 +1,20 @@
 import {useState} from "react";
-import './PunchLine.css'
+import Button from '@mui/material/Button'
 
 const PunchLine = (props) => {
-    const [punchLineText, setPunchLineText] = useState('Click for the answer')
+    const [punchLineText, setPunchLineText] = useState('Show Answer')
     const handleClick = () => {
         setPunchLineText(props.punchLine)
     }
     return (
-        <div className="punchLine" onClick={handleClick}>{punchLineText}</div>
+        <Button
+            sx={{
+                backgroundColor: 'lightblue',
+                mw: '50%',
+                p: '1rem',
+                borderRadius: '5px',
+            }}
+            className="punchLine" onClick={handleClick}>{punchLineText}</Button>
     )
 }
 

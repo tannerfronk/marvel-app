@@ -1,18 +1,4 @@
-.jokeCard {
-    width: 100%;
-    margin: 1rem .5rem;
-    box-shadow:
-            5px 5px 5px gray,
-            -5px 0 5px gray
-    ;
-}
 .cardInfo {
     text-align: center;
     padding-bottom: 1rem;
-}
-.punchLine {
-    text-align: center;
-}
-h2 {
-    padding: 0 1rem;
-}
+} /* cant figure out for now how to get this to work with the sx prop */
