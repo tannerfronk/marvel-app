@@ -8,16 +8,13 @@ import Typography from '@mui/material/Typography';
 
 const App = () => {
     const [currentJokes, setCurrentJokes] = useState([Jokes[0], Jokes[1], Jokes[2]])
-    const [amountOfJokes, setAmountOfJokes] = useState(5)
+    const [amountOfJokes, setAmountOfJokes] = useState(3)
 
     // load one joke per click
     const handleLoadMore = () => {
-        let currentJokesNum = amountOfJokes
-        let totalJokes = amountOfJokes + 1
-        for(let i = currentJokesNum; i < totalJokes; i++){
-            setCurrentJokes([...currentJokes, Jokes[i]])
-        }
-        setAmountOfJokes(totalJokes)
+        let nextJoke = amountOfJokes + 1
+        setCurrentJokes([...currentJokes, Jokes[nextJoke]])
+        setAmountOfJokes(nextJoke)
     }
 
   return (
