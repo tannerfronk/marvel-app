@@ -21,6 +21,7 @@ const App = () => {
     <div className="mainContent">
         <JokeCard jokeList={currentJokes}/>
         <Button
+            onClick={handleLoadMore}
             sx={{
                 width: '100%',
                 mx: '1.5rem',
@@ -30,7 +31,7 @@ const App = () => {
                 boxShadow: '5px 5px 5px gray'
             }}
         >
-            <Typography onClick={handleLoadMore}>Load New Joke</Typography>
+            <Typography>Load New Joke</Typography>
         </Button>
     </div>
   );
