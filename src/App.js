@@ -13,7 +13,9 @@ const App = () => {
     // load one joke per click
     const handleLoadMore = () => {
         let nextJoke = amountOfJokes + 1
-        setCurrentJokes([...currentJokes, Jokes[nextJoke]])
+        setCurrentJokes(prevState => {
+            return [...prevState, Jokes[nextJoke]]
+        })
         setAmountOfJokes(nextJoke)
     }
 
