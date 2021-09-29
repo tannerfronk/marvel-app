@@ -7,6 +7,8 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography';
 
 const App = () => {
+
+
     const [currentJokes, setCurrentJokes] = useState([Jokes[0], Jokes[1], Jokes[2]])
     const [amountOfJokes, setAmountOfJokes] = useState(3)
 
