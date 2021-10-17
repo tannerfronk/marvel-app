@@ -5,6 +5,7 @@ import {Jokes} from './data/jokes'
 import JokeCard from './components/JokeCard'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography';
+import { JokeContextProvider } from './contexts/jokeContext';
 
 const App = () => {
 
@@ -23,20 +24,22 @@ const App = () => {
 
   return (
     <div className="mainContent">
-        <JokeCard jokeList={currentJokes}/>
-        <Button
-            onClick={handleLoadMore}
-            sx={{
-                width: '100%',
-                mx: '1.5rem',
-                my: '1rem',
-                background: '#fff',
-                borderRadius: '5px',
-                boxShadow: '5px 5px 5px gray'
-            }}
-        >
-            <Typography>Load New Joke</Typography>
-        </Button>
+        <JokeContextProvider>
+            <JokeCard jokeList={currentJokes}/>
+            <Button
+                onClick={handleLoadMore}
+                sx={{
+                    width: '100%',
+                    mx: '1.5rem',
+                    my: '1rem',
+                    background: '#fff',
+                    borderRadius: '5px',
+                    boxShadow: '5px 5px 5px gray'
+                }}
+            >
+                <Typography>Load New Joke</Typography>
+            </Button>
+        </JokeContextProvider>
     </div>
   );
 }
