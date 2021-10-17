@@ -14,9 +14,9 @@ export const JokeContextProvider = (props) => {
             try {
                 const response = await axios.get(jokeURL)
 
-                setJokes(response.jokes)
+                setJokes(response.data)
             } catch(e) {
-
+                console.log(e)
             }
         }
         fetchJokes()

@@ -10,24 +10,23 @@ import { JokeContextProvider } from './contexts/jokeContext';
 const App = () => {
 
 
-    const [currentJokes, setCurrentJokes] = useState([Jokes[0], Jokes[1], Jokes[2]])
-    const [amountOfJokes, setAmountOfJokes] = useState(3)
+    // const [currentJokes, setCurrentJokes] = useState([Jokes[0], Jokes[1], Jokes[2]])
+    // const [amountOfJokes, setAmountOfJokes] = useState(3)
 
     // load one joke per click
-    const handleLoadMore = () => {
-        let nextJoke = amountOfJokes + 1
-        setCurrentJokes(prevState => {
-            return [...prevState, Jokes[nextJoke]]
-        })
-        setAmountOfJokes(nextJoke)
-    }
+    // const handleLoadMore = () => {
+    //     let nextJoke = amountOfJokes + 1
+    //     setCurrentJokes(prevState => {
+    //         return [...prevState, Jokes[nextJoke]]
+    //     })
+    //     setAmountOfJokes(nextJoke)
+    // }
 
   return (
     <div className="mainContent">
         <JokeContextProvider>
-            <JokeCard jokeList={currentJokes}/>
+            <JokeCard/>
             <Button
-                onClick={handleLoadMore}
                 sx={{
                     width: '100%',
                     mx: '1.5rem',

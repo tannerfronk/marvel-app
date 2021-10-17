@@ -3,12 +3,14 @@ import Card from '@mui/material/Card'
 import Container from "@mui/material/Container";
 import './JokeCard.css'
 import PunchLine from './PunchLine'
+import { useJokesContext } from '../contexts/jokeContext';
 
-const JokeCard = (props) => {
-    const jokes = props.jokeList
+const JokeCard = () => {
+    const jokes = useJokesContext()
 
+    console.log(jokes.jokes)
     return (
-        jokes.map((joke) => {
+        jokes.jokes.map((joke) => {
             return(
                 <Container key={joke.id} className="jokeCard">
                     <Card
@@ -25,7 +27,7 @@ const JokeCard = (props) => {
                         className="cardInfo"
                     >
                         <h2>{joke.setup}</h2>
-                        <PunchLine punchLine={joke.punchline}/>
+                        <PunchLine punchLine={joke.delivery}/>
                     </Card>
                 </Container>
             )
