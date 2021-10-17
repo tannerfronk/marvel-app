@@ -1,11 +1,11 @@
 // import {Jokes} from '../data/jokes'
-import {useState} from 'react';
+// import {useState} from 'react';
 import Card from '@mui/material/Card'
 import Container from "@mui/material/Container"
 import './JokeCard.css'
 import PunchLine from './PunchLine'
-import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
+// import Button from '@mui/material/Button'
+// import Typography from '@mui/material/Typography'
 
 import { useJokesContext } from '../contexts/jokeContext'
 
