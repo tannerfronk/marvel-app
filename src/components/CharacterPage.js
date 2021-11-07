@@ -3,16 +3,29 @@ import Box from '@mui/material/Box'
 import CharacterCard from './CharacterCard'
 import Modal from '@mui/material/Modal'
 import Typography from '@mui/material/Typography'
-
+import { useState } from 'react'
 import { useMarvelContext } from '../contexts/marvelContext'
+import Favorite from '@mui/icons-material/Favorite'
+import { FavoriteSharp } from '@mui/icons-material'
 
 const CharacterPage = () => {
     const characterList = useMarvelContext()
     const characters = characterList.characters.results
-    console.log(characters)
     const [open, setOpen] = React.useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
+    const [favoriteCharacters, setFavoriteCharacters] = useState([])
+
+    const setCharacterAsFavorite = (character) => {
+        console.log(character)
+        if(!favoriteCharacters.includes(character.id)){
+            setFavoriteCharacters((prevState) => [...prevState, character.id])
+        } else {
+            setFavoriteCharacters(() => {
+                return favoriteCharacters.filter((el) => el !== character.id)
+            })
+        }
+    }
 
     return (
         <Box
@@ -27,6 +40,7 @@ const CharacterPage = () => {
                         <CharacterCard
                             key={character.id}
                             charInfo={{ ...character }}
+                            addFavorites={setCharacterAsFavorite}
                             modalFunction={handleOpen}
                         />
                     )
