@@ -2,19 +2,25 @@ import * as React from 'react'
 import axios from 'axios'
 
 const MarvelContext = React.createContext({
-    characters: []
+    characters: [],
+    comics: []
 })
 
 export const MarvelContextProvider = (props) => {
     const [characters, setCharacters] = React.useState([])
+    const [comics, setComics] = React.useState([])
 
     React.useEffect(() => {
         const fetchCharacters = async () => {
-            const marvelURL = `/.netlify/functions/marvel`
+            const characterURL = `/.netlify/functions/marvel?type=characters`
+            const comicURL = `/.netlify/functions/marvel?type=comics`
             try {
-                const response = await axios.get(marvelURL)
+                const characterResponse = await axios.get(characterURL)
+                const comicResponse = await axios.get(comicURL)
 
-                setCharacters(response.data.data)
+                setCharacters(characterResponse.data.data.results)
+                setComics(comicResponse.data.data.results)
+                console.log(comicResponse.data.data.results)
             } catch(e) {
                 console.log(e)
             }
@@ -24,7 +30,8 @@ export const MarvelContextProvider = (props) => {
 
     return (
         <MarvelContext.Provider value={{
-            characters
+            characters,
+            comics
         }}>
             {props.children}
         </MarvelContext.Provider>

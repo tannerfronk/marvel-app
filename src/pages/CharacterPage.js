@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Box from '@mui/material/Box'
-import CharacterCard from './CharacterCard'
+import CharacterCard from '../components/CharacterCard'
 import Modal from '@mui/material/Modal'
 import Typography from '@mui/material/Typography'
 import { useState } from 'react'
@@ -10,14 +10,13 @@ import { FavoriteSharp } from '@mui/icons-material'
 
 const CharacterPage = () => {
     const characterList = useMarvelContext()
-    const characters = characterList.characters.results
+    const characters = characterList.characters
     const [open, setOpen] = React.useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
     const [favoriteCharacters, setFavoriteCharacters] = useState([])
 
     const setCharacterAsFavorite = (character) => {
-        console.log(character)
         if(!favoriteCharacters.includes(character.id)){
             setFavoriteCharacters((prevState) => [...prevState, character.id])
         } else {

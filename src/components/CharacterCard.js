@@ -31,9 +31,9 @@ const CharacterCard = (props) => {
             <CardContent>
                 <Typography>{props.charInfo.name}</Typography>
             </CardContent>
-            <CardActions>
+            <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <IconButton sx={{ p: 0, m: 0 }} onClick={handleSetFavorite}>
-                    <FavoriteIcon sx={{ color: favorite ? '#f00' : '#000'}} />
+                    <FavoriteIcon sx={{ color: favorite ? '#f00' : '#555'}} />
                 </IconButton>
                 <IconButton sx={{ p: 0 }}>
                     <PermIdentityIcon/>

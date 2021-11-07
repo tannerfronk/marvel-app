@@ -1,5 +1,6 @@
-import CharacterPage from './components/CharacterPage'
+import CharacterPage from './pages/CharacterPage'
 import { MarvelContextProvider } from './contexts/marvelContext';
+import NavBar from './nav/NavBar'
 
 const App = () => {
 
@@ -7,6 +8,7 @@ const App = () => {
 
   return (
     <div className="mainContent">
+      <NavBar/>
         <MarvelContextProvider>
             <CharacterPage/>
         </MarvelContextProvider>
