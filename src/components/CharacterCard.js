@@ -4,6 +4,7 @@ import { IconButton, Typography } from '@mui/material'
 import { CardMedia } from '@mui/material'
 import { CardContent } from '@mui/material'
 import { CardActions } from '@mui/material'
+import {FavoriteIcon} from '@mui/icons-material'
 
 const CharacterCard = (props) => {
 
@@ -26,7 +27,7 @@ const CharacterCard = (props) => {
             </CardContent>
             <CardActions>
                 <IconButton>
-                    
+                    <FavoriteIcon />
                 </IconButton>
             </CardActions>
         </Card>
