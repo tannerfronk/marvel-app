@@ -9,7 +9,7 @@ console.log(hash)
 
 exports.handler = async function (event, context) {
     try {
-        const response = await axios.get(`https://gateway.marvel.com:443/v1/public/characters?ts=${ts}&apikey=${process.env.API_KEY}&hash=${hash}`)
+        const response = await axios.get(`https://gateway.marvel.com:443/v1/public/characters?limit=50&ts=${ts}&apikey=${process.env.API_KEY}&hash=${hash}`)
         return {
             statusCode: 200,
             body: JSON.stringify(response.data)
