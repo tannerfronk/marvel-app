@@ -3,31 +3,23 @@
 import Card from '@mui/material/Card'
 import Container from "@mui/material/Container"
 import './JokeCard.css'
-import PunchLine from './PunchLine'
+// import PunchLine from './PunchLine'
 // import Button from '@mui/material/Button'
 // import Typography from '@mui/material/Typography'
 
-import { useJokesContext } from '../contexts/jokeContext'
+import { useMarvelContext } from '../contexts/marvelContext'
 
-const JokeCard = () => {
-    const jokeList = useJokesContext()
-    const jokes = jokeList.jokes
-
-    // const [currentJokes, setCurrentJokes] = useState(jokes)
-    // const [amountOfJokes, setAmountOfJokes] = useState(3)
-
-    // load more jokes
-    // const handleLoadMore = () => {
-    //     let newJokeSet = useJokesContext()
-    //     setCurrentJokes(prevState => {
-    //         return [...prevState, newJokeSet.jokes]
-    //     })
-    // }
+const CharacterCard = () => {
+    const characterList = useMarvelContext()
+    const characters = characterList.characters.results
+    console.log(characters)
 
     return (
-            jokes.map((joke) => {
+        <>
+            {characters && characters.length > 0 && 
+            characters.map((character) => {
                 return (
-                    <Container key={joke.id} className="jokeCard">
+                    <Container key={character.id} className="jokeCard">
                         <Card
                             sx={{
                                 width: '100%',
@@ -41,13 +33,13 @@ const JokeCard = () => {
                             }}
                             className="cardInfo"
                         >
-                            <h2>{joke.setup}</h2>
-                            <PunchLine punchLine={joke.delivery} />
+                            <h2>{character.name}</h2>
                         </Card>
                     </Container>
                 )
-            })
+            })}
+        </>
     )
 }
 
-export default JokeCard
+export default CharacterCard

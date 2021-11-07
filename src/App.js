@@ -2,10 +2,10 @@
 import './App.css'
 // import {useState} from 'react';
 // import {Jokes} from './data/jokes'
-import JokeCard from './components/JokeCard'
+import CharacterCard from './components/CharacterCard'
 // import Button from '@mui/material/Button'
 // import Typography from '@mui/material/Typography';
-import { JokeContextProvider } from './contexts/jokeContext';
+import { MarvelContextProvider } from './contexts/marvelContext';
 
 const App = () => {
 
@@ -26,8 +26,8 @@ const App = () => {
 
   return (
     <div className="mainContent">
-        <JokeContextProvider>
-            <JokeCard/>
+        <MarvelContextProvider>
+            <CharacterCard/>
             {/* <Button
                 sx={{
                     width: '100%',
@@ -40,7 +40,7 @@ const App = () => {
             >
                 <Typography>Load New Joke</Typography>
             </Button> */}
-        </JokeContextProvider>
+        </MarvelContextProvider>
     </div>
   );
 }
