@@ -1,6 +1,7 @@
 import CharacterPage from './pages/CharacterPage'
 import { MarvelContextProvider } from './contexts/marvelContext';
 import NavBar from './nav/NavBar'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
 const App = () => {
 
@@ -8,10 +9,14 @@ const App = () => {
 
   return (
     <div className="mainContent">
-      <NavBar/>
-        <MarvelContextProvider>
-            <CharacterPage/>
-        </MarvelContextProvider>
+      <MarvelContextProvider>
+        <NavBar />
+        <Switch>
+          <Route path='/characters'>
+            <CharacterPage />
+          </Route>
+        </Switch>
+      </MarvelContextProvider>
     </div>
   );
 }
