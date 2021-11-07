@@ -1,5 +1,4 @@
-# Simple Joke App
-### On page load, all jokes in jokes.js loads.
-### Click on blue space to reveal answers!
+# Marvel App
+### Character page will display marvel characters and relevant info
 
 #### Built with create-react-app
