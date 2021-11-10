@@ -9,11 +9,25 @@ import PermIdentityIcon from '@mui/icons-material/PermIdentity'
 
 const CharacterCard = (props) => {
     const [favorite, setFavorite] = React.useState(false)
-    const { charInfo } = props
+    const { cardInfo, page } = props
+    let cardTitle = ''
+    let height = '200'
+    let width = '200'
+    let maxWidth = '200'
+
+    if(page === 'characters'){
+        cardTitle = props.cardInfo.name
+
+    } else if(page === 'comics'){
+        cardTitle = props.cardInfo.title
+        height = '200'
+        width = '400'
+        maxWidth = '400'
+    }
 
     const handleSetFavorite = () => {
         setFavorite(!favorite)
-        props.addFavorites(charInfo)
+        props.addFavorites(cardInfo)
     }
 
     return (
@@ -24,12 +38,14 @@ const CharacterCard = (props) => {
                 justifyContent: 'space-between',
                 m: 1,
                 border: 2,
+                width: width,
+                maxWidth: maxWidth
             }}
         >
-            <CardMedia component='img' alt='Marvel Character' height='200'
-            image={props.charInfo.thumbnail.path + '/standard_xlarge.' + props.charInfo.thumbnail.extension}/>
+            <CardMedia component='img' alt='Marvel Character' height={height}
+            image={props.cardInfo.thumbnail.path + '/standard_xlarge.' + props.cardInfo.thumbnail.extension}/>
             <CardContent>
-                <Typography>{props.charInfo.name}</Typography>
+                <Typography>{cardTitle}</Typography>
             </CardContent>
             <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <IconButton sx={{ p: 0, m: 0 }} onClick={handleSetFavorite}>

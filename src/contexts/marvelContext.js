@@ -20,6 +20,7 @@ export const MarvelContextProvider = (props) => {
 
                 setCharacters(characterResponse.data.data.results)
                 setComics(comicResponse.data.data.results)
+                console.log(comicResponse)
             } catch(e) {
                 console.log(e)
             }

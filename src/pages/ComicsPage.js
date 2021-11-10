@@ -38,7 +38,8 @@ const ComicPage = () => {
                     return (
                         <CharacterCard
                             key={comic.id}
-                            charInfo={{ ...comic }}
+                            cardInfo={{ ...comic }}
+                            page="comics"
                             addFavorites={setComicAsFavorite}
                             modalFunction={handleOpen}
                         />

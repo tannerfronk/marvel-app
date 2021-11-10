@@ -38,7 +38,8 @@ const CharacterPage = () => {
                     return (
                         <CharacterCard
                             key={character.id}
-                            charInfo={{ ...character }}
+                            cardInfo={{ ...character }}
+                            page="characters"
                             addFavorites={setCharacterAsFavorite}
                             modalFunction={handleOpen}
                         />
