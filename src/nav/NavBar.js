@@ -112,9 +112,14 @@ const NavBar = () => {
                         <Box>
 
                             {!identity.user && !identity.provisionalUser && (
-                                <Button color="inherit">
-                                    <NavLink style={{ textDecoration: 'none', color: 'inherit' }} to="/signup">Sign Up</NavLink>
-                                </Button>
+                                <>
+                                    <Button color="inherit">
+                                        <NavLink style={{ textDecoration: 'none', color: 'inherit' }} to="/signup">Sign Up</NavLink>
+                                    </Button>
+                                    <Button color="inherit">
+                                        <NavLink style={{ textDecoration: 'none', color: 'inherit' }} to="/login">Login</NavLink>
+                                    </Button>
+                                </>
                             )}
 
                             {identity.provisionalUser && (
