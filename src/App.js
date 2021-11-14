@@ -1,5 +1,6 @@
 import CharacterPage from './pages/CharacterPage'
 import ComicPage from './pages/ComicsPage';
+import MarvelDetails from './pages/CharacterDetail';
 import { MarvelContextProvider } from './contexts/marvelContext';
 import NavBar from './nav/NavBar'
 import { Route, Switch } from 'react-router-dom'
@@ -16,7 +17,13 @@ const App = () => {
           <Route path='/characters'>
             <CharacterPage />
           </Route>
+          <Route path='/details/:charId' exact>
+            <MarvelDetails />
+          </Route>
           <Route path='/comics'>
+            <ComicPage />
+          </Route>
+          <Route path='/comics/:comicID' exact>
             <ComicPage />
           </Route>
         </Switch>

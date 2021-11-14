@@ -10,6 +10,7 @@ import { FavoriteSharp } from '@mui/icons-material'
 
 const CharacterPage = () => {
     const characterList = useMarvelContext()
+    console.log(characterList)
     const characters = characterList.characters
     const [open, setOpen] = React.useState(false)
     const handleOpen = () => setOpen(true)
