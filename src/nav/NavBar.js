@@ -31,7 +31,7 @@ const NavBar = () => {
 
     const handleNavChoice = (choice, shouldToggle, shouldLogOut = false) => {
         history.push(`/${choice}`)
-        if (shouldLogOut) identity.logout
+        if (shouldLogOut) identity.logout()
         if (shouldToggle) toggleDrawer()
     }
     const drawerItemList = () => (
