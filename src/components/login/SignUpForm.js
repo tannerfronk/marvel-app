@@ -8,16 +8,27 @@ const style = {
     mt: 4
 }
 
-const LoginForm = () => {
+const SignupForm = () => {
 
     return (
         <Box sx={style}>
             <Formik
                 initialValues={{
-                    email: '',
-                    password: ''
+                    email: 'email@example.com',
+                    password: 'ChangeMe123!',
+                    firstName: 'Tony',
+                    lastName: 'Stark',
+                    userName: ''
                 }}
                 validationSchema={Yup.object().shape({
+                    firstName: Yup.string()
+                        .required('First Name is required'),
+                    lastName: Yup.string()
+                        .required('Last Name is required'),
+                    userName: Yup.string()
+                        .min(3, 'Must be at least 4 characters')
+                        .max(25, 'Cannot be longer than 25 characters')
+                        .required('Username is required'),
                     email: Yup.string()
                         .email('Must be a valid email')
                         .max(255)
@@ -32,6 +43,9 @@ const LoginForm = () => {
                         setStatus({ success: true })
                         setSubmitting(false)
                         console.log({
+                            firstName: value.firstName,
+                            lastName: value.lastName,
+                            userName: value.userName,
                             email: value.email,
                             password: value.password
                         })
@@ -53,6 +67,49 @@ const LoginForm = () => {
                     touched
                 }) => (
                     <form noValidate onSubmit={handleSubmit}>
+                        <Box sx={{display: 'flex', flexDirection: 'row'}}>
+                        <TextField
+                            sx={{ mr: 1}}
+                            error={Boolean(touched.firstName && errors.firstName)}
+                            fullWidth
+                            helperText={touched.firstName && errors.firstName}
+                            label="First Name"
+                            margin="normal"
+                            name="firstName"
+                            onBlur={handleBlur}
+                            onChange={handleChange}
+                            type="text"
+                            variant="outlined"
+                            value={values.firstName}
+                        />
+                        <TextField
+                            sx={{ ml: 1}}
+                            error={Boolean(touched.lastName && errors.lastName)}
+                            fullWidth
+                            helperText={touched.lastName && errors.lastName}
+                            label="Last Name"
+                            margin="normal"
+                            name="lastName"
+                            onBlur={handleBlur}
+                            onChange={handleChange}
+                            type="text"
+                            variant="outlined"
+                            value={values.lastName}
+                        />
+                        </Box>
+                        <TextField
+                            error={Boolean(touched.userName && errors.userName)}
+                            fullWidth
+                            helperText={touched.userName && errors.userName}
+                            label="Username"
+                            margin="normal"
+                            name="userName"
+                            onBlur={handleBlur}
+                            onChange={handleChange}
+                            type="text"
+                            variant="outlined"
+                            value={values.userName}
+                        />
                         <TextField
                             error={Boolean(touched.email && errors.email)}
                             fullWidth
@@ -97,4 +154,4 @@ const LoginForm = () => {
     )
 }
 
-export default LoginForm
+export default SignupForm

@@ -63,7 +63,6 @@ const NavBar = () => {
                             edge="start"
                             color="inherit"
                             aria-label="menu"
-                            sx={{ mr: 2 }}
                             onClick={toggleDrawer}
                         >
                             <MenuIcon />
@@ -72,12 +71,15 @@ const NavBar = () => {
                             size="large"
                             aria-label="home button"
                             color="inherit"
+                            sx={{ ml: 13 }}
                             onClick={() => handleNavChoice('', false)}
                         >
                             <HomeIcon />
                         </IconButton>
                         <Box>
-                            <Button color="inherit">Sign Up</Button>
+                            <Button color="inherit">
+                            <NavLink style={{ textDecoration: 'none', color: 'inherit' }} to="/signup">Sign Up</NavLink>
+                            </Button>
                             <Button color="inherit">
                                 <NavLink style={{ textDecoration: 'none', color: 'inherit' }} to="/login">Login</NavLink>
                             </Button>
