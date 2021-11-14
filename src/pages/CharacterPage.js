@@ -5,8 +5,6 @@ import Modal from '@mui/material/Modal'
 import Typography from '@mui/material/Typography'
 import { useState } from 'react'
 import { useMarvelContext } from '../contexts/marvelContext'
-import Favorite from '@mui/icons-material/Favorite'
-import { FavoriteSharp } from '@mui/icons-material'
 
 const CharacterPage = () => {
     const characterList = useMarvelContext()

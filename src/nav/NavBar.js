@@ -11,10 +11,9 @@ import { Box,
     ListItemText, } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu'
 import HomeIcon from '@mui/icons-material/Home'
-import { useMarvelContext } from "../contexts/marvelContext"
 import {
 } from '@mui/material'
-import { useHistory } from 'react-router-dom'
+import { useHistory, NavLink } from 'react-router-dom'
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
 
@@ -79,7 +78,9 @@ const NavBar = () => {
                         </IconButton>
                         <Box>
                             <Button color="inherit">Sign Up</Button>
-                            <Button color="inherit">Login</Button>
+                            <Button color="inherit">
+                                <NavLink style={{ textDecoration: 'none', color: 'inherit' }} to="/login">Login</NavLink>
+                            </Button>
                         </Box>
                     </Toolbar>
                 </AppBar>

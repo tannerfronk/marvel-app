@@ -11,9 +11,9 @@ const MarvelDetails = () => {
     let card
 
     if(type === 'characters'){
-        card = marvelData.characters.find(item => item.id == params.id)
+        card = marvelData.characters.find(item => item.id === toString(params.id))
     } else if(type === 'comics'){
-        card = marvelData.comics.find(item => item.id == params.id)
+        card = marvelData.comics.find(item => item.id === toString(params.id))
     }
 
     return (
@@ -143,7 +143,7 @@ const MarvelDetails = () => {
                                         color="textSecondary"
                                         variant="body2"
                                     >
-                                        {(type === 'characters') ? <a href={card.urls[1].url} target="_blank">{card.urls[1].url}</a> : card.issueNumber}
+                                        {(type === 'characters') ? <a href={card.urls[1].url} target="_blank" rel="noreferrer">{card.urls[1].url}</a> : card.issueNumber}
                                     </Typography>
                                 </TableCell>
                             </TableRow>

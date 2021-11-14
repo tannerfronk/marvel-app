@@ -2,6 +2,7 @@ import Welcome from './pages/Welcome'
 import CharacterPage from './pages/CharacterPage'
 import ComicPage from './pages/ComicsPage'
 import MarvelDetails from './pages/CharacterDetail'
+import LoginForm from './components/login/LoginForm'
 import NotFound from './pages/NotFound'
 import { MarvelContextProvider } from './contexts/marvelContext'
 import NavBar from './nav/NavBar'
@@ -27,6 +28,9 @@ const App = () => {
           </Route>
           <Route path='/comics'>
             <ComicPage />
+          </Route>
+          <Route path='/login'>
+            <LoginForm />
           </Route>
           <Route path='*'>
             <NotFound />
