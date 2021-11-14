@@ -71,7 +71,7 @@ const MarvelDetails = () => {
                                         color="textSecondary"
                                         variant="body2"
                                     >
-                                        {(!card.description === "" || !card.description === null) ? card.description : "N/A"}
+                                        {(card.description === "" || card.description === null) ? "N/A" : card.description }
                                     </Typography>
                                 </TableCell>
                             </TableRow>
