@@ -33,7 +33,7 @@ const CharacterCard = (props) => {
     }
 
     const handleInfoClick = () => {
-        history.push(`/details/${cardInfo.id}`)
+        history.push(`/details/${page}/${cardInfo.id}`)
     }
 
     return (

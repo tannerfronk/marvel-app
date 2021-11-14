@@ -18,15 +18,15 @@ const App = () => {
           <Route path='/characters'>
             <CharacterPage />
           </Route>
-          <Route path='/details/:charId' exact>
+          <Route path='/details/:type/:id' exact>
             <MarvelDetails />
           </Route>
           <Route path='/comics'>
             <ComicPage />
           </Route>
-          <Route path='/comics/:comicID' exact>
+          {/* <Route path='/details/comics/:comicID' exact>
             <ComicPage />
-          </Route>
+          </Route> */}
           <Route path='*'>
             <NotFound />
           </Route>

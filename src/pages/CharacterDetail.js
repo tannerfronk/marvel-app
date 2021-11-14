@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box, Card, CardMedia, CardHeader, CardContent, Divider, Typography, Table, TableBody, TableCell, TableRow } from '@mui/material'
+import { Box, Card, CardMedia, CardHeader, Divider, Typography, Table, TableBody, TableCell, TableRow } from '@mui/material'
 import { useParams } from 'react-router-dom'
 import { useMarvelContext } from '../contexts/marvelContext'
 
@@ -7,8 +7,14 @@ const MarvelDetails = () => {
     const params = useParams()
     console.log(params)
     const marvelData = useMarvelContext()
+    const type = params.type
+    let card
 
-    const character = marvelData.characters.find(item => item.id == params.charId)
+    if(type === 'characters'){
+        card = marvelData.characters.find(item => item.id == params.id)
+    } else if(type === 'comics'){
+        card = marvelData.comics.find(item => item.id == params.id)
+    }
 
     return (
         <Box sx={{
@@ -26,7 +32,7 @@ const MarvelDetails = () => {
                     justifyContent: 'center'
                 }}>
                     <CardMedia component='img' alt='Marvel Character' height='200'
-                        image={character.thumbnail.path + '/standard_xlarge.' + character.thumbnail.extension} />
+                        image={card.thumbnail.path + '/detail.' + card.thumbnail.extension} />
                 </Card>
                 <Card sx={{ maxWidth: 1000 }}>
                     <CardHeader title="Character Details" />
@@ -39,7 +45,7 @@ const MarvelDetails = () => {
                                         color="textPrimary"
                                         variant="subtitle2"
                                     >
-                                        Name
+                                        {(type === 'characters') ? 'Name' : 'Title'}
                                     </Typography>
                                 </TableCell>
                                 <TableCell>
@@ -47,7 +53,7 @@ const MarvelDetails = () => {
                                         color="textSecondary"
                                         variant="body2"
                                     >
-                                        {character.name}
+                                        {card.name ?? card.title}
                                     </Typography>
                                 </TableCell>
                             </TableRow>
@@ -65,7 +71,7 @@ const MarvelDetails = () => {
                                         color="textSecondary"
                                         variant="body2"
                                     >
-                                        {character.description ? character.description : "N/A"}
+                                        {card.description ?? "N/A"}
                                     </Typography>
                                 </TableCell>
                             </TableRow>
@@ -75,7 +81,7 @@ const MarvelDetails = () => {
                                         color="textPrimary"
                                         variant="subtitle2"
                                     >
-                                        Comic Appearances
+                                        {(type === 'characters') ? 'Comic Appearances' : 'Pages'}
                                     </Typography>
                                 </TableCell>
                                 <TableCell>
@@ -83,7 +89,7 @@ const MarvelDetails = () => {
                                         color="textSecondary"
                                         variant="body2"
                                     >
-                                        {character.comics.available}
+                                        {(type === 'characters') ? card.comics.available : card.pageCount}
                                     </Typography>
                                 </TableCell>
                             </TableRow>
@@ -93,7 +99,7 @@ const MarvelDetails = () => {
                                         color="textPrimary"
                                         variant="subtitle2"
                                     >
-                                        Series Appearances
+                                        {(type === 'characters') ? 'Series Appearances' : 'Issue Variants'}
                                     </Typography>
                                 </TableCell>
                                 <TableCell>
@@ -101,7 +107,7 @@ const MarvelDetails = () => {
                                         color="textSecondary"
                                         variant="body2"
                                     >
-                                        {character.series.available}
+                                        {(type === 'characters') ? card.series.available : card.variants.length}
                                     </Typography>
                                 </TableCell>
                             </TableRow>
@@ -111,7 +117,7 @@ const MarvelDetails = () => {
                                         color="textPrimary"
                                         variant="subtitle2"
                                     >
-                                        Character Specific Stories
+                                        {(type === 'characters') ? 'Character Specific Stories' : 'Number of Characters'}
                                     </Typography>
                                 </TableCell>
                                 <TableCell>
@@ -119,7 +125,7 @@ const MarvelDetails = () => {
                                         color="textSecondary"
                                         variant="body2"
                                     >
-                                        {character.stories.available}
+                                        {(type === 'characters') ? card.stories.available : card.characters.available}
                                     </Typography>
                                 </TableCell>
                             </TableRow>
@@ -129,7 +135,7 @@ const MarvelDetails = () => {
                                         color="textPrimary"
                                         variant="subtitle2"
                                     >
-                                        Wiki Page
+                                        {(type === 'characters') ? 'Wiki Page' : 'Issue #'}
                                     </Typography>
                                 </TableCell>
                                 <TableCell>
@@ -137,7 +143,7 @@ const MarvelDetails = () => {
                                         color="textSecondary"
                                         variant="body2"
                                     >
-                                        {character.urls[1].url}
+                                        {(type === 'characters') ? card.urls[1].url : card.issueNumber}
                                     </Typography>
                                 </TableCell>
                             </TableRow>
