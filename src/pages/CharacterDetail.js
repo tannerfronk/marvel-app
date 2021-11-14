@@ -143,7 +143,7 @@ const MarvelDetails = () => {
                                         color="textSecondary"
                                         variant="body2"
                                     >
-                                        {(type === 'characters') ? card.urls[1].url : card.issueNumber}
+                                        {(type === 'characters') ? <a href={card.urls[1].url} target="_blank">{card.urls[1].url}</a> : card.issueNumber}
                                     </Typography>
                                 </TableCell>
                             </TableRow>
