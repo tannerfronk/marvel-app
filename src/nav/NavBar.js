@@ -119,7 +119,7 @@ const NavBar = () => {
 
                             {identity.provisionalUser && (
                                 <Button color="inherit">
-                                    <NavLink to="/login">Login</NavLink>
+                                    <NavLink style={{ textDecoration: 'none', color: 'inherit' }} to="/login">Login</NavLink>
                                 </Button>
                             )}
 

@@ -37,10 +37,6 @@ const LoginForm = () => {
                     try {
                         setStatus({ success: true })
                         setSubmitting(false)
-                        console.log({
-                            email: value.email,
-                            password: value.password
-                        })
                         await identity.login({
                             email: value.email,
                             password: value.password

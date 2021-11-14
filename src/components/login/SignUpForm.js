@@ -48,13 +48,6 @@ const SignupForm = () => {
                     try {
                         setStatus({ success: true })
                         setSubmitting(false)
-                        console.log({
-                            firstName: value.firstName,
-                            lastName: value.lastName,
-                            userName: value.userName,
-                            email: value.email,
-                            password: value.password
-                        })
                         await identity.signup({
                             email: value.email,
                             password: value.password,
