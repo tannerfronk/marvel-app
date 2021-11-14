@@ -13,18 +13,12 @@ const CharacterCard = (props) => {
     const { cardInfo, page } = props
     const history = useHistory()
     let cardTitle = ''
-    let height = '200'
     let width = '200'
-    let maxWidth = '200'
 
     if(page === 'characters'){
         cardTitle = props.cardInfo.name
-
     } else if(page === 'comics'){
         cardTitle = props.cardInfo.title
-        height = '200'
-        width = '400'
-        maxWidth = '400'
     }
 
     const handleSetFavorite = () => {
@@ -45,10 +39,10 @@ const CharacterCard = (props) => {
                 m: 1,
                 border: 2,
                 width: width,
-                maxWidth: maxWidth
+                maxWidth: 200
             }}
         >
-            <CardMedia component='img' alt='Marvel Character' height={height}
+            <CardMedia component='img' alt='Marvel Character' height='200'
             image={cardInfo.thumbnail.path + '/standard_xlarge.' + cardInfo.thumbnail.extension}/>
             <CardContent>
                 <Typography>{cardTitle}</Typography>

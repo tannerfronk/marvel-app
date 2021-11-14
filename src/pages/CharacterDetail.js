@@ -31,11 +31,11 @@ const MarvelDetails = () => {
                     flexDirection: 'column',
                     justifyContent: 'center'
                 }}>
-                    <CardMedia component='img' alt='Marvel Character' height='200'
+                    <CardMedia component='img' alt='Marvel Character' sx={{width: 500}}
                         image={card.thumbnail.path + '/detail.' + card.thumbnail.extension} />
                 </Card>
-                <Card sx={{ maxWidth: 1000 }}>
-                    <CardHeader title="Character Details" />
+                <Card sx={{ maxWidth: 700 }}>
+                    <CardHeader title={(type === 'characters') ? "Character Details" : "Comic Details"} />
                     <Divider />
                     <Table>
                         <TableBody>

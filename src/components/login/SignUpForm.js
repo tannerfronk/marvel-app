@@ -1,6 +1,8 @@
 import { Box, Button, TextField } from '@mui/material'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+import { useHistory } from 'react-router-dom'
+import { useIdentityContext } from 'react-netlify-identity-gotrue'
 
 const style = {
     display: 'flex',
@@ -9,6 +11,10 @@ const style = {
 }
 
 const SignupForm = () => {
+    const history = useHistory()
+    const identity = useIdentityContext()
+
+    const handleRedirect = () => history.push('/')
 
     return (
         <Box sx={style}>
@@ -49,6 +55,18 @@ const SignupForm = () => {
                             email: value.email,
                             password: value.password
                         })
+                        await identity.signup({
+                            email: value.email,
+                            password: value.password,
+                            user_metadata: {
+                                firstName: value.firstName,
+                                lastName: value.lastName,
+                                userName: value.userName
+                            }
+                        }).then(() => {
+                            handleRedirect()
+                            console.log('successfully submitted')
+                        })
                     } catch (e) {
                         console.log(e)
                         setStatus({ success: false })
@@ -67,35 +85,35 @@ const SignupForm = () => {
                     touched
                 }) => (
                     <form noValidate onSubmit={handleSubmit}>
-                        <Box sx={{display: 'flex', flexDirection: 'row'}}>
-                        <TextField
-                            sx={{ mr: 1}}
-                            error={Boolean(touched.firstName && errors.firstName)}
-                            fullWidth
-                            helperText={touched.firstName && errors.firstName}
-                            label="First Name"
-                            margin="normal"
-                            name="firstName"
-                            onBlur={handleBlur}
-                            onChange={handleChange}
-                            type="text"
-                            variant="outlined"
-                            value={values.firstName}
-                        />
-                        <TextField
-                            sx={{ ml: 1}}
-                            error={Boolean(touched.lastName && errors.lastName)}
-                            fullWidth
-                            helperText={touched.lastName && errors.lastName}
-                            label="Last Name"
-                            margin="normal"
-                            name="lastName"
-                            onBlur={handleBlur}
-                            onChange={handleChange}
-                            type="text"
-                            variant="outlined"
-                            value={values.lastName}
-                        />
+                        <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                            <TextField
+                                sx={{ mr: 1 }}
+                                error={Boolean(touched.firstName && errors.firstName)}
+                                fullWidth
+                                helperText={touched.firstName && errors.firstName}
+                                label="First Name"
+                                margin="normal"
+                                name="firstName"
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                type="text"
+                                variant="outlined"
+                                value={values.firstName}
+                            />
+                            <TextField
+                                sx={{ ml: 1 }}
+                                error={Boolean(touched.lastName && errors.lastName)}
+                                fullWidth
+                                helperText={touched.lastName && errors.lastName}
+                                label="Last Name"
+                                margin="normal"
+                                name="lastName"
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                type="text"
+                                variant="outlined"
+                                value={values.lastName}
+                            />
                         </Box>
                         <TextField
                             error={Boolean(touched.userName && errors.userName)}

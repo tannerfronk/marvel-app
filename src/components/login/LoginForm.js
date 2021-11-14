@@ -1,6 +1,8 @@
 import { Box, Button, TextField } from '@mui/material'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+import { useHistory } from 'react-router-dom'
+import { useIdentityContext } from 'react-netlify-identity-gotrue'
 
 const style = {
     display: 'flex',
@@ -9,6 +11,10 @@ const style = {
 }
 
 const LoginForm = () => {
+    const history = useHistory()
+    const identity = useIdentityContext()
+
+    const handleRedirect = () => history.push('/')
 
     return (
         <Box sx={style}>
@@ -34,6 +40,13 @@ const LoginForm = () => {
                         console.log({
                             email: value.email,
                             password: value.password
+                        })
+                        await identity.login({
+                            email: value.email,
+                            password: value.password
+                        }).then(() => {
+                            console.log('Successfully submitted!')
+                            handleRedirect()
                         })
                     } catch (e) {
                         console.log(e)

@@ -1,27 +1,33 @@
 import React from 'react'
-import { Box, 
-    AppBar, 
-    Toolbar, 
-    Drawer, 
-    IconButton, 
+import {
+    Box,
+    AppBar,
+    Toolbar,
+    Drawer,
+    IconButton,
     Button,
     ListItem,
     List,
     ListItemIcon,
-    ListItemText, } from "@mui/material"
+    ListItemText,
+} from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu'
 import HomeIcon from '@mui/icons-material/Home'
+import LoginIcon from '@mui/icons-material/Login'
+import LogoutIcon from '@mui/icons-material/Logout'
+import CreateIcon from '@mui/icons-material/Create';
 import {
 } from '@mui/material'
 import { useHistory, NavLink } from 'react-router-dom'
-import MenuBookIcon from '@mui/icons-material/MenuBook';
+import MenuBookIcon from '@mui/icons-material/MenuBook'
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
+import { useIdentityContext } from 'react-netlify-identity-gotrue'
 
 
 const NavBar = () => {
-
     const history = useHistory()
     const [isOpen, setIsOpen] = React.useState(false)
+    const identity = useIdentityContext()
 
     const handleNavChoice = (choice, shouldToggle) => {
         history.push(`/${choice}`)
@@ -29,20 +35,45 @@ const NavBar = () => {
     }
     const drawerItemList = () => (
         <Box sx={{ width: 250 }} role="presentation">
-            <List>
-                <ListItem button onClick={() => handleNavChoice('characters', true)}>
-                    <ListItemIcon>
-                        <EmojiPeopleIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Characters" />
-                </ListItem>
-                <ListItem button onClick={() => handleNavChoice('comics', true)}>
-                    <ListItemIcon>
-                        <MenuBookIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Comics" />
-                </ListItem>
-            </List>
+            {identity.user &&
+                <List>
+                    <ListItem button onClick={() => handleNavChoice('characters', true)}>
+                        <ListItemIcon>
+                            <EmojiPeopleIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Characters" />
+                    </ListItem>
+                    <ListItem button onClick={() => handleNavChoice('comics', true)}>
+                        <ListItemIcon>
+                            <MenuBookIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Comics" />
+                    </ListItem>
+                    <ListItem button onClick={() => handleNavChoice('/', true)}>
+                        <ListItemIcon>
+                            <LogoutIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Logout" />
+                    </ListItem>
+                </List>
+            }
+            {!identity.user &&
+                <List>
+                    <ListItem button onClick={() => handleNavChoice('login', true)}>
+                        <ListItemIcon>
+                            <LoginIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Login" />
+                    </ListItem>
+                    <ListItem button onClick={() => handleNavChoice('signup', true)}>
+                        <ListItemIcon>
+                            <CreateIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Sign Up" />
+                    </ListItem>
+                </List>
+            }
+
         </Box>
     )
 
@@ -58,37 +89,51 @@ const NavBar = () => {
                         display: 'flex',
                         justifyContent: 'space-between',
                     }}>
-                        <IconButton
-                            size="large"
-                            edge="start"
-                            color="inherit"
-                            aria-label="menu"
-                            onClick={toggleDrawer}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <IconButton
-                            size="large"
-                            aria-label="home button"
-                            color="inherit"
-                            sx={{ ml: 13 }}
-                            onClick={() => handleNavChoice('', false)}
-                        >
-                            <HomeIcon />
-                        </IconButton>
                         <Box>
-                            <Button color="inherit">
-                            <NavLink style={{ textDecoration: 'none', color: 'inherit' }} to="/signup">Sign Up</NavLink>
-                            </Button>
-                            <Button color="inherit">
-                                <NavLink style={{ textDecoration: 'none', color: 'inherit' }} to="/login">Login</NavLink>
-                            </Button>
+                            <IconButton
+                                size="large"
+                                edge="start"
+                                color="inherit"
+                                aria-label="menu"
+                                onClick={toggleDrawer}
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                            <IconButton
+                                size="large"
+                                aria-label="home button"
+                                color="inherit"
+                                onClick={() => handleNavChoice('', false)}
+                            >
+                                <HomeIcon />
+                            </IconButton>
+                        </Box>
+                        <Box>
+
+                            {!identity.user && !identity.provisionalUser && (
+                                <Button color="inherit">
+                                    <NavLink style={{ textDecoration: 'none', color: 'inherit' }} to="/signup">Sign Up</NavLink>
+                                </Button>
+                            )}
+
+                            {identity.provisionalUser && (
+                                <Button color="inherit">
+                                    <NavLink to="/login">Login</NavLink>
+                                </Button>
+                            )}
+
+                            {identity.user && (
+                                <Button color='inherit' onClick={identity.logout}>
+                                    Logout
+                                </Button>
+                            )}
+
                         </Box>
                     </Toolbar>
                 </AppBar>
             </Box>
             <Drawer achor="left" open={isOpen} onClick={toggleDrawer}>
-                    {drawerItemList()}
+                {drawerItemList()}
             </Drawer>
         </>
     )
