@@ -14,7 +14,7 @@ const App = () => {
 
   return (
     <div className="mainContent">
-      <IdentityContext url="www.example.com">
+      <IdentityContext url="https://sharp-blackwell-1ecc05.netlify.app">
         <MarvelContextProvider>
           <NavBar />
           <Switch>
