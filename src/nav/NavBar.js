@@ -29,8 +29,9 @@ const NavBar = () => {
     const [isOpen, setIsOpen] = React.useState(false)
     const identity = useIdentityContext()
 
-    const handleNavChoice = (choice, shouldToggle) => {
+    const handleNavChoice = (choice, shouldToggle, shouldLogOut = false) => {
         history.push(`/${choice}`)
+        if (shouldLogOut) identity.logout
         if (shouldToggle) toggleDrawer()
     }
     const drawerItemList = () => (
@@ -49,7 +50,7 @@ const NavBar = () => {
                         </ListItemIcon>
                         <ListItemText primary="Comics" />
                     </ListItem>
-                    <ListItem button onClick={() => handleNavChoice('/', true)}>
+                    <ListItem button onClick={() => handleNavChoice('', true, true)}>
                         <ListItemIcon>
                             <LogoutIcon />
                         </ListItemIcon>
@@ -123,7 +124,7 @@ const NavBar = () => {
                             )}
 
                             {identity.user && (
-                                <Button color='inherit' onClick={identity.logout}>
+                                <Button color='inherit' onClick={() => handleNavChoice('', false, true)}>
                                     Logout
                                 </Button>
                             )}
