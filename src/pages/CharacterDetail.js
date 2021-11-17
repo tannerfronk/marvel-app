@@ -29,12 +29,19 @@ const MarvelDetails = () => {
                 <Card sx={{
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    backgroundColor: '#222',
+                    color: 'white',
+                    border: 'black'
                 }}>
                     <CardMedia component='img' alt='Marvel Character' sx={{width: 500}}
                         image={card.thumbnail.path + '/detail.' + card.thumbnail.extension} />
                 </Card>
-                <Card sx={{ maxWidth: 700 }}>
+                <Card sx={{ 
+                    maxWidth: 700,
+                    backgroundColor: '#222',
+                    color: 'white',
+                    border: 'black' }}>
                     <CardHeader title={(type === 'characters') ? "Character Details" : "Comic Details"} />
                     <Divider />
                     <Table>
@@ -42,7 +49,7 @@ const MarvelDetails = () => {
                             <TableRow>
                                 <TableCell>
                                     <Typography
-                                        color="textPrimary"
+                                        color="white"
                                         variant="subtitle2"
                                     >
                                         {(type === 'characters') ? 'Name' : 'Title'}
@@ -50,7 +57,7 @@ const MarvelDetails = () => {
                                 </TableCell>
                                 <TableCell>
                                     <Typography
-                                        color="textSecondary"
+                                        color="white"
                                         variant="body2"
                                     >
                                         {card.name ?? card.title}
@@ -60,7 +67,7 @@ const MarvelDetails = () => {
                             <TableRow>
                                 <TableCell>
                                     <Typography
-                                        color="textPrimary"
+                                        color="white"
                                         variant="subtitle2"
                                     >
                                         Description
@@ -68,7 +75,7 @@ const MarvelDetails = () => {
                                 </TableCell>
                                 <TableCell>
                                     <Typography
-                                        color="textSecondary"
+                                        color="white"
                                         variant="body2"
                                     >
                                         {(card.description === "" || card.description === null) ? "N/A" : card.description }
@@ -78,7 +85,7 @@ const MarvelDetails = () => {
                             <TableRow>
                                 <TableCell>
                                     <Typography
-                                        color="textPrimary"
+                                        color="white"
                                         variant="subtitle2"
                                     >
                                         {(type === 'characters') ? 'Comic Appearances' : 'Pages'}
@@ -86,7 +93,7 @@ const MarvelDetails = () => {
                                 </TableCell>
                                 <TableCell>
                                     <Typography
-                                        color="textSecondary"
+                                        color="white"
                                         variant="body2"
                                     >
                                         {(type === 'characters') ? card.comics.available : card.pageCount}
@@ -96,7 +103,7 @@ const MarvelDetails = () => {
                             <TableRow>
                                 <TableCell>
                                     <Typography
-                                        color="textPrimary"
+                                        color="white"
                                         variant="subtitle2"
                                     >
                                         {(type === 'characters') ? 'Series Appearances' : 'Issue Variants'}
@@ -104,7 +111,7 @@ const MarvelDetails = () => {
                                 </TableCell>
                                 <TableCell>
                                     <Typography
-                                        color="textSecondary"
+                                        color="white"
                                         variant="body2"
                                     >
                                         {(type === 'characters') ? card.series.available : card.variants.length}
@@ -114,7 +121,7 @@ const MarvelDetails = () => {
                             <TableRow>
                                 <TableCell>
                                     <Typography
-                                        color="textPrimary"
+                                        color="white"
                                         variant="subtitle2"
                                     >
                                         {(type === 'characters') ? 'Character Specific Stories' : 'Number of Characters'}
@@ -122,7 +129,7 @@ const MarvelDetails = () => {
                                 </TableCell>
                                 <TableCell>
                                     <Typography
-                                        color="textSecondary"
+                                        color="white"
                                         variant="body2"
                                     >
                                         {(type === 'characters') ? card.stories.available : card.characters.available}
@@ -132,7 +139,7 @@ const MarvelDetails = () => {
                             <TableRow>
                                 <TableCell>
                                     <Typography
-                                        color="textPrimary"
+                                        color="white"
                                         variant="subtitle2"
                                     >
                                         {(type === 'characters') ? 'Wiki Page' : 'Issue #'}
@@ -140,10 +147,11 @@ const MarvelDetails = () => {
                                 </TableCell>
                                 <TableCell>
                                     <Typography
-                                        color="textSecondary"
+                                        color="white"
                                         variant="body2"
+                                        className="link"
                                     >
-                                        {(type === 'characters') ? <a href={card.urls[1].url} target="_blank" rel="noreferrer">{card.urls[1].url}</a> : card.issueNumber}
+                                        {(type === 'characters') ? <a style={{ textDecoration: 'none', color: 'white' }} href={card.urls[1].url} target="_blank" rel="noreferrer">{card.urls[1].url}</a> : card.issueNumber}
                                     </Typography>
                                 </TableCell>
                             </TableRow>
