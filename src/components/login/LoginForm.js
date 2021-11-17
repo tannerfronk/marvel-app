@@ -89,8 +89,7 @@ const LoginForm = () => {
                             value={values.password}
                         />
                         <Button
-                            sx={{ mt: 2 }}
-                            color="error"
+                            sx={{ mt: 2, backgroundColor: '#F0131E' }}
                             disabled={isSubmitting}
                             fullWidth
                             size="large"
