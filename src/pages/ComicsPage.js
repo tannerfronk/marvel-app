@@ -30,6 +30,7 @@ const ComicPage = () => {
             sx={{
                 display: 'flex',
                 flexWrap: 'wrap',
+                justifyContent: 'center'
             }}
         >
             {(!comics || comics.length < 1) &&

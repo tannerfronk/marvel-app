@@ -31,6 +31,7 @@ const CharacterPage = () => {
             sx={{
                 display: 'flex',
                 flexWrap: 'wrap',
+                justifyContent: 'center'
             }}
         >
             {(!characters || characters.length < 1) &&

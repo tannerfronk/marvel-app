@@ -40,18 +40,20 @@ const CharacterCard = (props) => {
                 border: 2,
                 width: width,
                 maxWidth: 200,
+                backgroundColor: '#222',
+                color: 'white'
             }}
         >
             <CardMedia component='img' alt='Marvel Character' height='200'
             image={cardInfo.thumbnail.path + '/standard_xlarge.' + cardInfo.thumbnail.extension}/>
-            <CardContent sx={{ bg: '#A9A9A9' }}>
+            <CardContent>
                 <Typography>{cardTitle}</Typography>
             </CardContent>
             <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <IconButton sx={{ p: 0, m: 0 }} onClick={handleSetFavorite}>
-                    <FavoriteIcon sx={{ color: favorite ? '#f00' : '#555'}} />
+                    <FavoriteIcon sx={{ color: favorite ? '#F0131E' : '#555'}} />
                 </IconButton>
-                <IconButton sx={{ p: 0 }} onClick={handleInfoClick}>
+                <IconButton sx={{ p: 0, color: '#F0131E' }} onClick={handleInfoClick}>
                     <PermIdentityIcon/>
                 </IconButton>
             </CardActions>
