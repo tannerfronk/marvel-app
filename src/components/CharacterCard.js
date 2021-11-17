@@ -42,7 +42,7 @@ const CharacterCard = (props) => {
                 maxWidth: 200,
                 backgroundColor: '#222',
                 color: 'white',
-                border: 'black'
+                borderColor: 'black'
             }}
         >
             <CardMedia component='img' alt='Marvel Character' height='200'

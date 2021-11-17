@@ -6,15 +6,22 @@ import Typography from '@mui/material/Typography'
 import { useState } from 'react'
 import { useMarvelContext } from '../contexts/marvelContext'
 import { CircularProgress } from '@mui/material';
+import { useIdentityContext } from 'react-netlify-identity-gotrue'
+import { useHistory } from 'react-router-dom'
 
 const CharacterPage = () => {
     const characterList = useMarvelContext()
-    console.log(characterList)
     const characters = characterList.characters
     const [open, setOpen] = React.useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
     const [favoriteCharacters, setFavoriteCharacters] = useState([])
+    const identity = useIdentityContext()
+    const history = useHistory()
+
+    if(!identity.user){
+        history.push('/login')
+    }
 
     const setCharacterAsFavorite = (character) => {
         if(!favoriteCharacters.includes(character.id)){

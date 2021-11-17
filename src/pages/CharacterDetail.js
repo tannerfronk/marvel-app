@@ -1,19 +1,25 @@
 import * as React from 'react'
-import { Box, Card, CardMedia, CardHeader, Divider, Typography, Table, TableBody, TableCell, TableRow } from '@mui/material'
+import { Box, Button, Card, CardMedia, CardHeader, Divider, Typography, Table, TableBody, TableCell, TableRow } from '@mui/material'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useParams } from 'react-router-dom'
 import { useMarvelContext } from '../contexts/marvelContext'
+import { useHistory } from 'react-router-dom'
 
 const MarvelDetails = () => {
     const params = useParams()
-    console.log(params)
     const marvelData = useMarvelContext()
     const type = params.type
+    const history = useHistory()
     let card
 
     if(type === 'characters'){
         card = marvelData.characters.find(item => item.id.toString() === params.id)
     } else if(type === 'comics'){
         card = marvelData.comics.find(item => item.id.toString() === params.id)
+    }
+
+    const handleBackToType = () => {
+        history.push(`/${type}`)
     }
 
     return (
@@ -32,7 +38,7 @@ const MarvelDetails = () => {
                     justifyContent: 'center',
                     backgroundColor: '#222',
                     color: 'white',
-                    border: 'black'
+                    borderColor: 'black'
                 }}>
                     <CardMedia component='img' alt='Marvel Character' sx={{width: 500}}
                         image={card.thumbnail.path + '/detail.' + card.thumbnail.extension} />
@@ -41,9 +47,13 @@ const MarvelDetails = () => {
                     maxWidth: 700,
                     backgroundColor: '#222',
                     color: 'white',
-                    border: 'black' }}>
-                    <CardHeader title={(type === 'characters') ? "Character Details" : "Comic Details"} />
-                    <Divider />
+                    borderColor: 'black' }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+
+                        <CardHeader title={(type === 'characters') ? "Character Details" : "Comic Details"} />
+                        <Button sx={{ color: 'white' }} onClick={handleBackToType}><ArrowBackIcon /></Button>
+                    </Box>
+                    <Divider light='true' />
                     <Table>
                         <TableBody>
                             <TableRow>

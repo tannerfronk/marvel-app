@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography'
 import { useState } from 'react'
 import { useMarvelContext } from '../contexts/marvelContext'
 import { CircularProgress } from '@mui/material';
+import { useIdentityContext } from 'react-netlify-identity-gotrue'
+import { useHistory } from 'react-router-dom'
 
 const ComicPage = () => {
     const comicList = useMarvelContext()
@@ -14,6 +16,12 @@ const ComicPage = () => {
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
     const [favoriteComics, setFavoriteComics] = useState([])
+    const identity = useIdentityContext()
+    const history = useHistory()
+
+    if(!identity.user){
+        history.push('/login')
+    }
 
     const setComicAsFavorite = (comic) => {
         if(!favoriteComics.includes(comic.id)){
