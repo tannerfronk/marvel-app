@@ -53,7 +53,7 @@ const MarvelDetails = () => {
                         <CardHeader title={(type === 'characters') ? "Character Details" : "Comic Details"} />
                         <Button sx={{ color: 'white' }} onClick={handleBackToType}><ArrowBackIcon /></Button>
                     </Box>
-                    <Divider light='true' />
+                    <Divider light='true' color="white" />
                     <Table>
                         <TableBody>
                             <TableRow>
