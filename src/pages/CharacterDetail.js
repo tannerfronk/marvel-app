@@ -19,7 +19,7 @@ const MarvelDetails = () => {
     }
 
     const handleBackToType = () => {
-        history.push(`/${type}`)
+        history.goBack()
     }
 
     return (
