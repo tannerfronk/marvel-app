@@ -39,12 +39,12 @@ const CharacterCard = (props) => {
                 m: 1,
                 border: 2,
                 width: width,
-                maxWidth: 200
+                maxWidth: 200,
             }}
         >
             <CardMedia component='img' alt='Marvel Character' height='200'
             image={cardInfo.thumbnail.path + '/standard_xlarge.' + cardInfo.thumbnail.extension}/>
-            <CardContent>
+            <CardContent sx={{ bg: '#A9A9A9' }}>
                 <Typography>{cardTitle}</Typography>
             </CardContent>
             <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>

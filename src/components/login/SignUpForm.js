@@ -149,7 +149,7 @@ const SignupForm = () => {
                         />
                         <Button
                             sx={{ mt: 2 }}
-                            color="primary"
+                            color="error"
                             disabled={isSubmitting}
                             fullWidth
                             size="large"

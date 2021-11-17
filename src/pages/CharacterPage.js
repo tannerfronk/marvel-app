@@ -5,6 +5,7 @@ import Modal from '@mui/material/Modal'
 import Typography from '@mui/material/Typography'
 import { useState } from 'react'
 import { useMarvelContext } from '../contexts/marvelContext'
+import { CircularProgress } from '@mui/material';
 
 const CharacterPage = () => {
     const characterList = useMarvelContext()
@@ -32,6 +33,12 @@ const CharacterPage = () => {
                 flexWrap: 'wrap',
             }}
         >
+            {(!characters || characters.length < 1) &&
+                <Box sx={{ margin: 'auto', marginTop: 5 }}>
+                    <CircularProgress variant="indeterminate" size='5em' sx={{ color: '#F0131E' }}></CircularProgress>
+                    
+                </Box>
+            }
             {characters && characters.length > 0 &&
                 characters.map((character) => {
                     return (
