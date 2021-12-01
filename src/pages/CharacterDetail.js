@@ -44,6 +44,7 @@ const MarvelDetails = () => {
                         image={card.thumbnail.path + '/detail.' + card.thumbnail.extension} />
                 </Card>
                 <Card sx={{ 
+                    minWidth: 600,
                     maxWidth: 700,
                     backgroundColor: '#222',
                     color: 'white',
@@ -134,7 +135,7 @@ const MarvelDetails = () => {
                                         color="white"
                                         variant="subtitle2"
                                     >
-                                        {(type === 'characters') ? 'Character Specific Stories' : 'Number of Characters'}
+                                        {(type === 'characters') ? 'Comics Page' : 'Number of Characters'}
                                     </Typography>
                                 </TableCell>
                                 <TableCell>
@@ -142,7 +143,7 @@ const MarvelDetails = () => {
                                         color="white"
                                         variant="body2"
                                     >
-                                        {(type === 'characters') ? card.stories.available : card.characters.available}
+                                        {(type === 'characters') ? <a style={{ color: 'white' }} href={card.urls[1].url} target="_blank" rel="noreferrer">Click Here</a> : card.characters.available}
                                     </Typography>
                                 </TableCell>
                             </TableRow>
@@ -161,7 +162,7 @@ const MarvelDetails = () => {
                                         variant="body2"
                                         className="link"
                                     >
-                                        {(type === 'characters') ? <a style={{ textDecoration: 'none', color: 'white' }} href={card.urls[1].url} target="_blank" rel="noreferrer">{card.urls[1].url}</a> : card.issueNumber}
+                                        {(type === 'characters') ? <a style={{ color: 'white' }} href={card.urls[1].url} target="_blank" rel="noreferrer">Click Here</a> : card.issueNumber}
                                     </Typography>
                                 </TableCell>
                             </TableRow>
