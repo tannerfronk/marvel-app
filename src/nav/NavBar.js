@@ -16,19 +16,19 @@ import HomeIcon from '@mui/icons-material/Home'
 import LoginIcon from '@mui/icons-material/Login'
 import LogoutIcon from '@mui/icons-material/Logout'
 import CreateIcon from '@mui/icons-material/Create';
-import { useHistory, NavLink } from 'react-router-dom'
+import { useNavigate, NavLink } from 'react-router-dom'
 import MenuBookIcon from '@mui/icons-material/MenuBook'
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
 import { useIdentityContext } from 'react-netlify-identity-gotrue'
 
 
 const NavBar = () => {
-    const history = useHistory()
+    const navigate = useNavigate()
     const [isOpen, setIsOpen] = React.useState(false)
     const identity = useIdentityContext()
 
     const handleNavChoice = (choice, shouldToggle, shouldLogOut = false) => {
-        history.push(`/${choice}`)
+        navigate(`/${choice}`)
         if (shouldLogOut) identity.logout()
         if (shouldToggle) toggleDrawer()
     }

@@ -1,7 +1,7 @@
 import { Box, Button, TextField } from '@mui/material'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useIdentityContext } from 'react-netlify-identity-gotrue'
 
 const style = {
@@ -11,10 +11,10 @@ const style = {
 }
 
 const LoginForm = () => {
-    const history = useHistory()
+    const navigate = useNavigate()
     const identity = useIdentityContext()
 
-    const handleRedirect = () => history.push('/')
+    const handleRedirect = () => navigate('/')
 
     return (
         <Box sx={style}>

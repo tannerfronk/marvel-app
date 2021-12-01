@@ -6,12 +6,12 @@ import { CardContent } from '@mui/material'
 import { CardActions } from '@mui/material'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import PermIdentityIcon from '@mui/icons-material/PermIdentity'
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router'
 
 const CharacterCard = (props) => {
     const [favorite, setFavorite] = React.useState(false)
     const { cardInfo, page } = props
-    const history = useHistory()
+    const navigate = useNavigate()
     let cardTitle = ''
     let width = '200'
 
@@ -27,7 +27,7 @@ const CharacterCard = (props) => {
     }
 
     const handleInfoClick = () => {
-        history.push(`/details/${page}/${cardInfo.id}`)
+        navigate(`/details/${page}/${cardInfo.id}`)
     }
 
     return (

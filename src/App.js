@@ -1,3 +1,4 @@
+import React from 'react'
 import Welcome from './pages/Welcome'
 import CharacterPage from './pages/CharacterPage'
 import ComicPage from './pages/ComicsPage'
@@ -7,8 +8,9 @@ import SignupForm from './components/login/SignUpForm'
 import NotFound from './pages/NotFound'
 import { MarvelContextProvider } from './contexts/marvelContext'
 import NavBar from './nav/NavBar'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import IdentityContext from 'react-netlify-identity-gotrue'
+import SlideRoutes from 'react-slide-routes'
 
 const App = () => {
 
@@ -17,29 +19,15 @@ const App = () => {
       <IdentityContext url="https://sharp-blackwell-1ecc05.netlify.app">
         <MarvelContextProvider>
           <NavBar />
-          <Switch>
-            <Route path='/' exact>
-              <Welcome />
-            </Route>
-            <Route path='/characters'>
-              <CharacterPage />
-            </Route>
-            <Route path='/comics'>
-              <ComicPage />
-            </Route>
-            <Route path='/details/:type/:id' exact>
-              <MarvelDetails />
-            </Route>
-            <Route path='/login'>
-              <LoginForm />
-            </Route>
-            <Route path='/signup'>
-              <SignupForm />
-            </Route>
-            <Route path='*'>
-              <NotFound />
-            </Route>
-          </Switch>
+          <SlideRoutes duration={200}>
+              <Route path='/' element={<Welcome />} exact />
+              <Route path='/characters' element={<CharacterPage />} />
+              <Route path='/comics' element={<ComicPage />} />
+              <Route path='/details/:type/:id' element={<MarvelDetails />} exact />
+              <Route path='/login' element={<LoginForm />} />
+              <Route path='/signup' element={<SignupForm />} />
+              <Route path='*' element={<NotFound />} />
+          </SlideRoutes>
         </MarvelContextProvider>
       </IdentityContext>
     </div>

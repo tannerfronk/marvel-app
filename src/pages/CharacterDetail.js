@@ -3,13 +3,13 @@ import { Box, Button, Card, CardMedia, CardHeader, Divider, Typography, Table, T
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useParams } from 'react-router-dom'
 import { useMarvelContext } from '../contexts/marvelContext'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const MarvelDetails = () => {
     const params = useParams()
     const marvelData = useMarvelContext()
     const type = params.type
-    const history = useHistory()
+    const navigate = useNavigate()
     let card
 
     if(type === 'characters'){
@@ -19,7 +19,7 @@ const MarvelDetails = () => {
     }
 
     const handleBackToType = () => {
-        history.goBack()
+        navigate(-1)
     }
 
     return (

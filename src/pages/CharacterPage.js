@@ -7,7 +7,7 @@ import { useState } from 'react'
 import { useMarvelContext } from '../contexts/marvelContext'
 import { CircularProgress } from '@mui/material';
 import { useIdentityContext } from 'react-netlify-identity-gotrue'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const CharacterPage = () => {
     const characterList = useMarvelContext()
@@ -17,10 +17,10 @@ const CharacterPage = () => {
     const handleClose = () => setOpen(false)
     const [favoriteCharacters, setFavoriteCharacters] = useState([])
     const identity = useIdentityContext()
-    const history = useHistory()
+    const navigate = useNavigate()
 
     if(!identity.user){
-        history.push('/login')
+        navigate('/login')
     }
 
     const setCharacterAsFavorite = (character) => {
