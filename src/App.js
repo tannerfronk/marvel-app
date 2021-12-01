@@ -8,7 +8,7 @@ import SignupForm from './components/login/SignUpForm'
 import NotFound from './pages/NotFound'
 import { MarvelContextProvider } from './contexts/marvelContext'
 import NavBar from './nav/NavBar'
-import { Route, Routes } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import IdentityContext from 'react-netlify-identity-gotrue'
 import SlideRoutes from 'react-slide-routes'
 

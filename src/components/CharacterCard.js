@@ -7,6 +7,7 @@ import { CardActions } from '@mui/material'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import PermIdentityIcon from '@mui/icons-material/PermIdentity'
 import { useNavigate } from 'react-router'
+import Grow from '@mui/material/Grow';
 
 const CharacterCard = (props) => {
     const [favorite, setFavorite] = React.useState(false)
@@ -15,9 +16,9 @@ const CharacterCard = (props) => {
     let cardTitle = ''
     let width = '200'
 
-    if(page === 'characters'){
+    if (page === 'characters') {
         cardTitle = props.cardInfo.name
-    } else if(page === 'comics'){
+    } else if (page === 'comics') {
         cardTitle = props.cardInfo.title
     }
 
@@ -46,16 +47,25 @@ const CharacterCard = (props) => {
             }}
         >
             <CardMedia component='img' alt='Marvel Character' height='200'
-            image={cardInfo.thumbnail.path + '/standard_xlarge.' + cardInfo.thumbnail.extension}/>
+                image={cardInfo.thumbnail.path + '/standard_xlarge.' + cardInfo.thumbnail.extension} />
             <CardContent>
                 <Typography>{cardTitle}</Typography>
             </CardContent>
             <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <IconButton sx={{ p: 0, m: 0 }} onClick={handleSetFavorite}>
-                    <FavoriteIcon sx={{ color: favorite ? '#F0131E' : '#555'}} />
+                    <Grow in={favorite} mountOnEnter unmountOnExit
+                        {...(favorite ? { timeout: 1500 } : {})}
+                        style={{ position: 'absolute', marginLeft: '1.5rem' }}>
+                        <FavoriteIcon sx={{ color: '#F0131E' }} />
+                    </Grow>
+                    <Grow in={!favorite} mountOnEnter unmountOnExit 
+                        {...(!favorite ? { timeout: 1500 } : {})}
+                        style={{ position: 'absolute', marginLeft: '1.5rem' }}>
+                        <FavoriteIcon sx={{ color: '#555' }} />
+                    </Grow>
                 </IconButton>
                 <IconButton sx={{ p: 0, color: '#F0131E' }} onClick={handleInfoClick}>
-                    <PermIdentityIcon/>
+                    <PermIdentityIcon />
                 </IconButton>
             </CardActions>
         </Card>
