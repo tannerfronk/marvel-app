@@ -1,10 +1,7 @@
 import * as React from 'react'
 import Box from '@mui/material/Box'
 import CharacterCard from '../components/CharacterCard'
-import Modal from '@mui/material/Modal'
-import Typography from '@mui/material/Typography'
 import { useMarvelContext } from '../contexts/marvelContext'
-import { CircularProgress } from '@mui/material';
 import { useIdentityContext } from 'react-netlify-identity-gotrue'
 import { useNavigate } from 'react-router-dom'
 
@@ -23,8 +20,6 @@ const Favorites = () => {
             return allCards.filter((card) => favorites.indexOf(card.id) !== -1)
         })
     }, [favorites, allCards])
-
-    let length = favorites.length
 
     return (
 
