@@ -10,9 +10,6 @@ import { useNavigate } from 'react-router-dom'
 
 const ComicPage = () => {
     const { comics, setAsFavorite } = useMarvelContext()
-    const [open, setOpen] = React.useState(false)
-    const handleOpen = () => setOpen(true)
-    const handleClose = () => setOpen(false)
     const identity = useIdentityContext()
     const navigate = useNavigate()
 
@@ -42,13 +39,9 @@ const ComicPage = () => {
                             cardInfo={{ ...comic }}
                             page="comics"
                             addFavorites={setAsFavorite}
-                            modalFunction={handleOpen}
                         />
                     )
                 })}
-                <Modal open={open} onClose={handleClose}>
-                    <Typography variant="h6">Comic Information</Typography>
-                </Modal>
         </Box>
     )
 }

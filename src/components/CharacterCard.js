@@ -6,6 +6,7 @@ import { CardContent } from '@mui/material'
 import { CardActions } from '@mui/material'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import PermIdentityIcon from '@mui/icons-material/PermIdentity'
+import MenuBookIcon from '@mui/icons-material/MenuBook'
 import { useNavigate } from 'react-router'
 import Grow from '@mui/material/Grow';
 import { useMarvelContext } from '../contexts/marvelContext'
@@ -70,7 +71,12 @@ const CharacterCard = (props) => {
                     </Grow>
                 </IconButton>
                 <IconButton sx={{ p: 0, color: '#F0131E' }} onClick={handleInfoClick}>
-                    <PermIdentityIcon />
+                    {cardInfo.name &&
+                        <PermIdentityIcon />
+                    }
+                    {cardInfo.title &&
+                        <MenuBookIcon />
+                    }
                 </IconButton>
             </CardActions>
         </Card>
