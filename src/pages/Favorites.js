@@ -32,7 +32,7 @@ const Favorites = () => {
         >
             {(!currentFavorites || currentFavorites.length < 1) &&
                 <Box sx={{ margin: 'auto', marginTop: 5 }}>
-                    <h4>No Favorites to display, go add some!</h4>
+                    <h2>No Favorites to display, go add some!</h2>
                 </Box>
             }
             {currentFavorites && currentFavorites.length > 0 &&
