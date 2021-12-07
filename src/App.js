@@ -11,6 +11,7 @@ import NavBar from './nav/NavBar'
 import { Route } from 'react-router-dom'
 import IdentityContext from 'react-netlify-identity-gotrue'
 import SlideRoutes from 'react-slide-routes'
+import Favorites from './pages/Favorites'
 
 const App = () => {
 
@@ -26,6 +27,7 @@ const App = () => {
               <Route path='/details/:type/:id' element={<MarvelDetails />} exact />
               <Route path='/login' element={<LoginForm />} />
               <Route path='/signup' element={<SignupForm />} />
+              <Route path='/favorites' element={<Favorites />} />
               <Route path='*' element={<NotFound />} />
           </SlideRoutes>
         </MarvelContextProvider>

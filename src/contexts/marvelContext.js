@@ -1,18 +1,18 @@
 import * as React from 'react'
-import { useState } from 'react' // unsure why above import isn't covering this
-
 import axios from 'axios'
 
 const MarvelContext = React.createContext({
     characters: [],
     comics: [],
-    favorites: []
+    favorites: [],
+    allCards: []
 })
 
 export const MarvelContextProvider = (props) => {
     const [characters, setCharacters] = React.useState([])
     const [comics, setComics] = React.useState([])
-    const [favorites, setFavorites] = useState([])
+    const [favorites, setFavorites] = React.useState([])
+    const [allCards, setAllCards] = React.useState([])
 
 
     const setAsFavorite = (character) => {
@@ -34,7 +34,9 @@ export const MarvelContextProvider = (props) => {
                 const comicResponse = await axios.get(comicURL)
 
                 setCharacters(characterResponse.data.data.results)
+                console.log(characterResponse.data.data.results)
                 setComics(comicResponse.data.data.results)
+                setAllCards([...characterResponse.data.data.results, ...comicResponse.data.data.results])
             } catch(e) {
                 console.log(e)
             }
@@ -47,7 +49,8 @@ export const MarvelContextProvider = (props) => {
             characters,
             comics,
             favorites,
-            setAsFavorite
+            setAsFavorite,
+            allCards
         }}>
             {props.children}
         </MarvelContext.Provider>

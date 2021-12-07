@@ -20,6 +20,7 @@ import { useNavigate, NavLink } from 'react-router-dom'
 import MenuBookIcon from '@mui/icons-material/MenuBook'
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople'
 import { useIdentityContext } from 'react-netlify-identity-gotrue'
+import FavoriteIcon from '@mui/icons-material/Favorite'
 
 
 const NavBar = () => {
@@ -47,6 +48,12 @@ const NavBar = () => {
                             <MenuBookIcon />
                         </ListItemIcon>
                         <ListItemText primary="Comics" />
+                    </ListItem>
+                    <ListItem button onClick={() => handleNavChoice('favorites', true)}>
+                        <ListItemIcon>
+                            <FavoriteIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Favorites" />
                     </ListItem>
                     <ListItem button onClick={() => handleNavChoice('', true, true)}>
                         <ListItemIcon>

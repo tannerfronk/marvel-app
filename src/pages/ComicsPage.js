@@ -3,7 +3,6 @@ import Box from '@mui/material/Box'
 import CharacterCard from '../components/CharacterCard'
 import Modal from '@mui/material/Modal'
 import Typography from '@mui/material/Typography'
-import { useState } from 'react'
 import { useMarvelContext } from '../contexts/marvelContext'
 import { CircularProgress } from '@mui/material';
 import { useIdentityContext } from 'react-netlify-identity-gotrue'
