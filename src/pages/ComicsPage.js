@@ -10,27 +10,15 @@ import { useIdentityContext } from 'react-netlify-identity-gotrue'
 import { useNavigate } from 'react-router-dom'
 
 const ComicPage = () => {
-    const comicList = useMarvelContext()
-    const comics = comicList.comics
+    const { comics, setAsFavorite } = useMarvelContext()
     const [open, setOpen] = React.useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
-    const [favoriteComics, setFavoriteComics] = useState([])
     const identity = useIdentityContext()
     const navigate = useNavigate()
 
     if(!identity.user){
         navigate('/login')
-    }
-
-    const setComicAsFavorite = (comic) => {
-        if(!favoriteComics.includes(comic.id)){
-            setFavoriteComics((prevState) => [...prevState, comic.id])
-        } else {
-            setFavoriteComics(() => {
-                return favoriteComics.filter((el) => el !== comic.id)
-            })
-        }
     }
 
     return (
@@ -54,7 +42,7 @@ const ComicPage = () => {
                             key={comic.id}
                             cardInfo={{ ...comic }}
                             page="comics"
-                            addFavorites={setComicAsFavorite}
+                            addFavorites={setAsFavorite}
                             modalFunction={handleOpen}
                         />
                     )

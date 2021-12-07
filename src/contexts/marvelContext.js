@@ -1,14 +1,29 @@
 import * as React from 'react'
+import { useState } from 'react' // unsure why above import isn't covering this
+
 import axios from 'axios'
 
 const MarvelContext = React.createContext({
     characters: [],
-    comics: []
+    comics: [],
+    favorites: []
 })
 
 export const MarvelContextProvider = (props) => {
     const [characters, setCharacters] = React.useState([])
     const [comics, setComics] = React.useState([])
+    const [favorites, setFavorites] = useState([])
+
+
+    const setAsFavorite = (character) => {
+        if(favorites.indexOf(character.id) === -1){
+            setFavorites((prevState) => [...prevState, character.id])
+        } else {
+            setFavorites(() => {
+                return favorites.filter((el) => el !== character.id)
+            })
+        }
+    }
 
     React.useEffect(() => {
         const fetchCharacters = async () => {
@@ -30,7 +45,9 @@ export const MarvelContextProvider = (props) => {
     return (
         <MarvelContext.Provider value={{
             characters,
-            comics
+            comics,
+            favorites,
+            setAsFavorite
         }}>
             {props.children}
         </MarvelContext.Provider>

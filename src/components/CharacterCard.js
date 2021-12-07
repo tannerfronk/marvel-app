@@ -8,28 +8,33 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import PermIdentityIcon from '@mui/icons-material/PermIdentity'
 import { useNavigate } from 'react-router'
 import Grow from '@mui/material/Grow';
+import { useMarvelContext } from '../contexts/marvelContext'
 
 const CharacterCard = (props) => {
     const [favorite, setFavorite] = React.useState(false)
     const { cardInfo, page } = props
+    const { favorites, setAsFavorite } = useMarvelContext()
     const navigate = useNavigate()
     let cardTitle = ''
     let width = '200'
 
     if (page === 'characters') {
-        cardTitle = props.cardInfo.name
+        cardTitle = cardInfo.name
     } else if (page === 'comics') {
-        cardTitle = props.cardInfo.title
+        cardTitle = cardInfo.title
     }
 
     const handleSetFavorite = () => {
-        setFavorite(!favorite)
-        props.addFavorites(cardInfo)
+        setAsFavorite(cardInfo)
     }
 
     const handleInfoClick = () => {
         navigate(`/details/${page}/${cardInfo.id}`)
     }
+
+    React.useEffect(() => {
+        favorites.indexOf(cardInfo.id) !== -1 ? setFavorite(true) : setFavorite(false)
+      }, [cardInfo.id, favorites])
 
     return (
         <Card
