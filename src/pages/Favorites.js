@@ -24,8 +24,6 @@ const Favorites = () => {
         })
     }, [favorites, allCards])
 
-    console.log(currentFavorites)
-
     let length = favorites.length
 
     return (

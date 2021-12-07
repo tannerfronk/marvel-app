@@ -34,7 +34,6 @@ export const MarvelContextProvider = (props) => {
                 const comicResponse = await axios.get(comicURL)
 
                 setCharacters(characterResponse.data.data.results)
-                console.log(characterResponse.data.data.results)
                 setComics(comicResponse.data.data.results)
                 setAllCards([...characterResponse.data.data.results, ...comicResponse.data.data.results])
             } catch(e) {
