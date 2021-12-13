@@ -55,7 +55,7 @@ const NavBar = () => {
                         </ListItemIcon>
                         <ListItemText primary="Favorites" />
                     </ListItem>
-                    <ListItem button onClick={() => handleNavChoice('', true, true)}>
+                    <ListItem button onClick={() => handleNavChoice('login', true, true)}>
                         <ListItemIcon>
                             <LogoutIcon />
                         </ListItemIcon>
